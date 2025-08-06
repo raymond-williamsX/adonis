@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADONIS - Shaping Digital Future</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00A6FB',
+                        secondary: '#051B2C'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0A;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #051B2C 0%, #2A0944 50%, #051B2C 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .floating-animation {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(0, 166, 251, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 10s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 166, 251, 0.2);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 166, 251, 0.5);
+        }
+        
+        .text-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .text-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-solid {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00A6FB;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .portfolio-item {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 166, 251, 0.8), rgba(42, 9, 68, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+        
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: #00A6FB;
+            box-shadow: 0 0 0 2px rgba(0, 166, 251, 0.2);
+            outline: none;
+        }
+        
+        .floating-label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .form-input:focus + .floating-label,
+        .form-input:not(:placeholder-shown) + .floating-label {
+            top: -0.5rem;
+            font-size: 0.75rem;
+            color: #00A6FB;
+            background: #0A0A0A;
+            padding: 0 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 flex items-center justify-center">
+                    <div class="text-2xl font-['Pacifico'] text-primary">A</div>
+                </div>
+                <span class="text-xl font-bold">ADONIS</span>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="hover:text-primary transition-colors duration-300">Home</a>
+                <a href="#about" class="hover:text-primary transition-colors duration-300">About</a>
+                <a href="#services" class="hover:text-primary transition-colors duration-300">Services</a>
+                <a href="#portfolio" class="hover:text-primary transition-colors duration-300">Portfolio</a>
+                <a href="#contact" class="hover:text-primary transition-colors duration-300">Contact</a>
+            </div>
+            
+            <button id="mobile-menu-btn" class="md:hidden w-6 h-6 flex items-center justify-center">
+                <i class="ri-menu-line text-xl"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-black bg-opacity-95 backdrop-blur-lg transform -translate-y-full opacity-0 transition-all duration-300">
+            <div class="px-6 py-8 space-y-4">
+                <a href="#home" class="block py-2 hover:text-primary transition-colors duration-300">Home</a>
+                <a href="#about" class="block py-2 hover:text-primary transition-colors duration-300">About</a>
+                <a href="#services" class="block py-2 hover:text-primary transition-colors duration-300">Services</a>
+                <a href="#portfolio" class="block py-2 hover:text-primary transition-colors duration-300">Portfolio</a>
+                <a href="#contact" class="block py-2 hover:text-primary transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen hero-gradient flex items-center justify-center overflow-hidden">
+        <div class="particle" style="left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; width: 3px; height: 3px; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 40%; width: 5px; height: 5px; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 50%; width: 4px; height: 4px; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 60%; width: 6px; height: 6px; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; width: 3px; height: 3px; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 80%; width: 5px; height: 5px; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 90%; width: 4px; height: 4px; animation-delay: 1s;"></div>
+        
+        <div class="text-center z-10 px-6 max-w-4xl mx-auto">
+            <div class="floating-animation mb-8">
+                <div class="w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+                    <div class="text-6xl font-['Pacifico'] text-primary neon-glow">A</div>
+                </div>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-black mb-6 text-reveal">
+                Shaping Digital
+                <span class="text-primary">Future</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto text-reveal">
+                We craft innovative digital experiences that transform businesses and inspire users through cutting-edge technology and creative design.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center text-reveal">
+                <button class="px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap">
+                    Get Started
+                </button>
+                <button class="px-8 py-4 border border-primary text-primary font-semibold !rounded-button hover:bg-primary hover:text-white transition-all duration-300 whitespace-nowrap">
+                    View Portfolio
+                </button>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-arrow-down-line text-2xl text-primary"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl md:text-5xl font-bold text-reveal">
+                        About <span class="text-primary">ADONIS</span>
+                    </h2>
+                    
+                    <p class="text-lg text-gray-300 leading-relaxed text-reveal">
+                        We are a forward-thinking digital agency specializing in creating exceptional user experiences and innovative solutions. Our team combines technical expertise with creative vision to deliver projects that exceed expectations.
+                    </p>
+                    
+                    <p class="text-lg text-gray-300 leading-relaxed text-reveal">
+                        From web development to mobile applications, from branding to digital marketing, we help businesses thrive in the digital landscape with cutting-edge technology and strategic thinking.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-8 pt-8 text-reveal">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2" data-count="150">0</div>
+                            <div class="text-sm text-gray-400">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2" data-count="50">0</div>
+                            <div class="text-sm text-gray-400">Happy Clients</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2" data-count="5">0</div>
+                            <div class="text-sm text-gray-400">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative floating-animation">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="glass-card p-6 !rounded-xl">
+                            <div class="w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="ri-code-line text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Development</h3>
+                            <p class="text-sm text-gray-400">Modern web & mobile solutions</p>
+                        </div>
+                        
+                        <div class="glass-card p-6 !rounded-xl mt-8">
+                            <div class="w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="ri-palette-line text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Design</h3>
+                            <p class="text-sm text-gray-400">Creative & user-focused design</p>
+                        </div>
+                        
+                        <div class="glass-card p-6 !rounded-xl -mt-4">
+                            <div class="w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="ri-rocket-line text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Strategy</h3>
+                            <p class="text-sm text-gray-400">Digital transformation consulting</p>
+                        </div>
+                        
+                        <div class="glass-card p-6 !rounded-xl mt-4">
+                            <div class="w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="ri-shield-check-line text-2xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Security</h3>
+                            <p class="text-sm text-gray-400">Secure & scalable solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-reveal">
+                    Our <span class="text-primary">Services</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto text-reveal">
+                    We offer comprehensive digital solutions to help your business succeed in the modern digital landscape.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
+                        <i class="ri-smartphone-line text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Mobile Development</h3>
+                    <p class="text-gray-300 mb-6">Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>iOS & Android Apps</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>React Native Development</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>App Store Optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
+                        <i class="ri-global-line text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Web Development</h3>
+                    <p class="text-gray-300 mb-6">Modern, responsive websites and web applications built with the latest technologies and best practices.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>React & Next.js</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>E-commerce Solutions</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>CMS Development</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
+                        <i class="ri-brush-line text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">UI/UX Design</h3>
+                    <p class="text-gray-300 mb-6">User-centered design solutions that create meaningful connections between your brand and customers.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>User Research</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Wireframing & Prototyping</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Design Systems</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
+                        <i class="ri-cloud-line text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Cloud Solutions</h3>
+                    <p class="text-gray-300 mb-6">Scalable cloud infrastructure and DevOps solutions to ensure your applications perform at their best.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>AWS & Azure</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>CI/CD Pipelines</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Monitoring & Analytics</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
+                        <i class="ri-search-line text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Digital Marketing</h3>
+                    <p class="text-gray-300 mb-6">Data-driven marketing strategies that increase your online visibility and drive meaningful engagement.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>SEO Optimization</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Social Media Marketing</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Content Strategy</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
+                        <i class="ri-settings-line text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Consulting</h3>
+                    <p class="text-gray-300 mb-6">Strategic technology consulting to help you make informed decisions and optimize your digital transformation.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Technology Audit</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Digital Strategy</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Process Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-reveal">
+                    Our <span class="text-primary">Portfolio</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto text-reveal">
+                    Explore our latest projects and see how we've helped businesses achieve their digital goals.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20interface%20with%20clean%20design%20and%20product%20showcase%20on%20laptop%20screen%20in%20minimalist%20office%20setting%20with%20soft%20lighting%20and%20professional%20atmosphere&width=400&height=300&seq=portfolio1&orientation=landscape" alt="E-commerce Platform" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-400 mb-4">Modern online shopping experience with advanced features</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">React</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Node.js</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://readdy.ai/api/search-image?query=mobile%20banking%20app%20interface%20displayed%20on%20smartphone%20with%20modern%20UI%20design%20and%20financial%20dashboard%20in%20professional%20business%20environment%20with%20clean%20background&width=400&height=300&seq=portfolio2&orientation=landscape" alt="Mobile Banking App" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mobile Banking App</h3>
+                        <p class="text-gray-400 mb-4">Secure and intuitive banking application</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">React Native</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Firebase</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Security</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://readdy.ai/api/search-image?query=healthcare%20management%20system%20dashboard%20on%20computer%20screen%20with%20medical%20data%20visualization%20and%20patient%20records%20in%20modern%20hospital%20office%20with%20clean%20professional%20lighting&width=400&height=300&seq=portfolio3&orientation=landscape" alt="Healthcare Management" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Healthcare Management</h3>
+                        <p class="text-gray-400 mb-4">Comprehensive patient management system</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Vue.js</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://readdy.ai/api/search-image?query=real%20estate%20website%20interface%20showing%20property%20listings%20and%20search%20functionality%20on%20desktop%20computer%20in%20modern%20real%20estate%20office%20with%20professional%20atmosphere&width=400&height=300&seq=portfolio4&orientation=landscape" alt="Real Estate Platform" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Real Estate Platform</h3>
+                        <p class="text-gray-400 mb-4">Advanced property search and listing platform</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Next.js</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">GraphQL</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Maps API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://readdy.ai/api/search-image?query=fitness%20tracking%20mobile%20app%20interface%20with%20workout%20analytics%20and%20health%20metrics%20displayed%20on%20smartphone%20in%20modern%20gym%20environment%20with%20clean%20lighting&width=400&height=300&seq=portfolio5&orientation=landscape" alt="Fitness Tracking App" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fitness Tracking App</h3>
+                        <p class="text-gray-400 mb-4">Comprehensive health and fitness monitoring</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Flutter</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">IoT</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://readdy.ai/api/search-image?query=education%20learning%20management%20system%20dashboard%20with%20online%20courses%20and%20student%20progress%20tracking%20on%20laptop%20screen%20in%20modern%20classroom%20setting&width=400&height=300&seq=portfolio6&orientation=landscape" alt="Learning Management System" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Learning Management System</h3>
+                        <p class="text-gray-400 mb-4">Interactive online education platform</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Angular</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Django</span>
+                            <span class="px-3 py-1 bg-primary bg-opacity-20 text-primary text-sm !rounded-full">Video Streaming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 px-6 bg-black">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-reveal">
+                    What Our <span class="text-primary">Clients Say</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto text-reveal">
+                    Don't just take our word for it. Here's what our clients have to say about working with us.
+                </p>
+            </div>
+            
+            <div class="relative overflow-hidden">
+                <div id="testimonial-slider" class="testimonial-slider">
+                    <div class="flex-shrink-0 w-full px-4">
+                        <div class="glass-card p-8 !rounded-xl max-w-4xl mx-auto text-center">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                                <i class="ri-double-quotes-l text-4xl text-primary"></i>
+                            </div>
+                            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                                "ADONIS transformed our digital presence completely. Their team delivered a stunning website that not only looks amazing but also performs exceptionally well. Our online sales increased by 300% within the first quarter."
+                            </p>
+                            <div class="flex items-center justify-center space-x-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20executive%20headshot%20portrait%20of%20confident%20woman%20in%20corporate%20attire%20with%20clean%20background%20and%20professional%20lighting&width=80&height=80&seq=testimonial1&orientation=squarish" alt="Sarah Johnson" class="w-16 h-16 !rounded-full object-cover object-top">
+                                <div>
+                                    <div class="font-semibold text-lg">Sarah Johnson</div>
+                                    <div class="text-gray-400">CEO, TechStart Inc.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-shrink-0 w-full px-4">
+                        <div class="glass-card p-8 !rounded-xl max-w-4xl mx-auto text-center">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                                <i class="ri-double-quotes-l text-4xl text-primary"></i>
+                            </div>
+                            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                                "Working with ADONIS was a game-changer for our mobile app development. They delivered a high-quality product on time and within budget. The user experience is fantastic, and our customers love it."
+                            </p>
+                            <div class="flex items-center justify-center space-x-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20executive%20headshot%20portrait%20of%20confident%20man%20in%20suit%20with%20clean%20background%20and%20professional%20lighting&width=80&height=80&seq=testimonial2&orientation=squarish" alt="Michael Chen" class="w-16 h-16 !rounded-full object-cover object-top">
+                                <div>
+                                    <div class="font-semibold text-lg">Michael Chen</div>
+                                    <div class="text-gray-400">Founder, HealthTech Solutions</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-shrink-0 w-full px-4">
+                        <div class="glass-card p-8 !rounded-xl max-w-4xl mx-auto text-center">
+                            <div class="w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                                <i class="ri-double-quotes-l text-4xl text-primary"></i>
+                            </div>
+                            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                                "The team at ADONIS exceeded our expectations in every way. Their attention to detail, technical expertise, and creative approach resulted in a platform that truly represents our brand and serves our users perfectly."
+                            </p>
+                            <div class="flex items-center justify-center space-x-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20executive%20headshot%20portrait%20of%20confident%20woman%20with%20glasses%20in%20business%20attire%20with%20clean%20background&width=80&height=80&seq=testimonial3&orientation=squarish" alt="Emily Rodriguez" class="w-16 h-16 !rounded-full object-cover object-top">
+                                <div>
+                                    <div class="font-semibold text-lg">Emily Rodriguez</div>
+                                    <div class="text-gray-400">Director, EduPlatform</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button class="testimonial-dot w-3 h-3 !rounded-full bg-primary opacity-100 transition-opacity duration-300"></button>
+                    <button class="testimonial-dot w-3 h-3 !rounded-full bg-gray-600 opacity-50 transition-opacity duration-300"></button>
+                    <button class="testimonial-dot w-3 h-3 !rounded-full bg-gray-600 opacity-50 transition-opacity duration-300"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="space-y-8">
+                    <div class="text-reveal">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                            Let's Build Something <span class="text-primary">Amazing</span>
+                        </h2>
+                        <p class="text-xl text-gray-300 leading-relaxed">
+                            Ready to transform your digital presence? Get in touch with us and let's discuss how we can help bring your vision to life.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-6 text-reveal">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 !rounded-xl">
+                                <i class="ri-mail-line text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Email Us</div>
+                                <div class="text-gray-400">hello@adonis.com</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 !rounded-xl">
+                                <i class="ri-phone-line text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Call Us</div>
+                                <div class="text-gray-400">+1 (555) 123-4567</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 !rounded-xl">
+                                <i class="ri-map-pin-line text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Visit Us</div>
+                                <div class="text-gray-400">123 Innovation Street, Tech City, TC 12345</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4 text-reveal">
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 !rounded-xl hover:bg-primary hover:bg-opacity-100 transition-all duration-300">
+                            <i class="ri-linkedin-fill text-xl text-primary hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 !rounded-xl hover:bg-primary hover:bg-opacity-100 transition-all duration-300">
+                            <i class="ri-twitter-fill text-xl text-primary hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 !rounded-xl hover:bg-primary hover:bg-opacity-100 transition-all duration-300">
+                            <i class="ri-github-fill text-xl text-primary hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-20 !rounded-xl hover:bg-primary hover:bg-opacity-100 transition-all duration-300">
+                            <i class="ri-dribbble-fill text-xl text-primary hover:text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="relative">
+                                <input type="text" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " required>
+                                <label class="floating-label">First Name</label>
+                            </div>
+                            <div class="relative">
+                                <input type="text" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " required>
+                                <label class="floating-label">Last Name</label>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <input type="email" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " required>
+                            <label class="floating-label">Email Address</label>
+                        </div>
+                        
+                        <div class="relative">
+                            <input type="tel" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" ">
+                            <label class="floating-label">Phone Number</label>
+                        </div>
+                        
+                        <div class="relative">
+                            <select class="form-input w-full px-4 py-3 !rounded-lg border-none pr-8" required>
+                                <option value="">Select a service</option>
+                                <option value="web">Web Development</option>
+                                <option value="mobile">Mobile Development</option>
+                                <option value="design">UI/UX Design</option>
+                                <option value="cloud">Cloud Solutions</option>
+                                <option value="marketing">Digital Marketing</option>
+                                <option value="consulting">Consulting</option>
+                            </select>
+                        </div>
+                        
+                        <div class="relative">
+                            <textarea class="form-input w-full px-4 py-3 !rounded-lg border-none h-32 resize-none" placeholder=" " required></textarea>
+                            <label class="floating-label">Project Details</label>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 px-6 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 flex items-center justify-center">
+                            <div class="text-2xl font-['Pacifico'] text-primary">A</div>
+                        </div>
+                        <span class="text-xl font-bold">ADONIS</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Shaping the digital future through innovative solutions and creative excellence.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 !rounded-lg hover:bg-primary transition-colors duration-300">
+                            <i class="ri-linkedin-fill text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 !rounded-lg hover:bg-primary transition-colors duration-300">
+                            <i class="ri-twitter-fill text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 !rounded-lg hover:bg-primary transition-colors duration-300">
+                            <i class="ri-github-fill text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 !rounded-lg hover:bg-primary transition-colors duration-300">
+                            <i class="ri-dribbble-fill text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">Web Development</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">Mobile Apps</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">UI/UX Design</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">Cloud Solutions</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">Digital Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">Our Team</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">Careers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">Blog</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Stay updated with our latest news and insights.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 !rounded-lg text-sm focus:border-primary focus:outline-none">
+                        <button class="px-4 py-2 bg-primary text-white !rounded-button hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap">
+                            <i class="ri-send-plane-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 ADONIS. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white !rounded-full opacity-0 pointer-events-none transition-all duration-300 hover:bg-blue-600 z-50">
+        <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+
+    <script id="navigation-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let isMenuOpen = false;
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('nav-solid');
+                } else {
+                    navbar.classList.remove('nav-solid');
+                }
+            });
+
+            mobileMenuBtn.addEventListener('click', function() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.style.transform = 'translateY(0)';
+                    mobileMenu.style.opacity = '1';
+                    mobileMenuBtn.innerHTML = '<i class="ri-close-line text-xl"></i>';
+                } else {
+                    mobileMenu.style.transform = 'translateY(-100%)';
+                    mobileMenu.style.opacity = '0';
+                    mobileMenuBtn.innerHTML = '<i class="ri-menu-line text-xl"></i>';
+                }
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        if (isMenuOpen) {
+                            mobileMenu.style.transform = 'translateY(-100%)';
+                            mobileMenu.style.opacity = '0';
+                            mobileMenuBtn.innerHTML = '<i class="ri-menu-line text-xl"></i>';
+                            isMenuOpen = false;
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script id="scroll-animations-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.text-reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            const counters = document.querySelectorAll('[data-count]');
+            const counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-count'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += step;
+                            if (current >= target) {
+                                entry.target.textContent = target + '+';
+                                clearInterval(timer);
+                            } else {
+                                entry.target.textContent = Math.floor(current);
+                            }
+                        }, 16);
+                        
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            counters.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+        });
+    </script>
+
+    <script id="testimonial-slider-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('testimonial-slider');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            let currentSlide = 0;
+            const totalSlides = 3;
+
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('opacity-100', 'bg-primary');
+                        dot.classList.remove('opacity-50', 'bg-gray-600');
+                    } else {
+                        dot.classList.remove('opacity-100', 'bg-primary');
+                        dot.classList.add('opacity-50', 'bg-gray-600');
+                    }
+                });
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            }, 5000);
+        });
+    </script>
+
+    <script id="form-interactions-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const formInputs = document.querySelectorAll('.form-input');
+            
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                });
+            });
+
+            const contactForm = document.querySelector('form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.textContent = 'Message Sent!';
+                    submitBtn.classList.add('bg-green-600');
+                    submitBtn.classList.remove('bg-primary');
+                    
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-green-600');
+                        submitBtn.classList.add('bg-primary');
+                        contactForm.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        });
+    </script>
+
+    <script id="back-to-top-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.add('opacity-100');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                    backToTopBtn.classList.remove('opacity-100');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <script id="custom-cursor-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.querySelector('.custom-cursor');
+            
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+            document.addEventListener('mouseenter', function() {
+                cursor.style.opacity = '1';
+            });
+
+            document.addEventListener('mouseleave', function() {
+                cursor.style.opacity = '0';
+            });
+
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    cursor.style.transform = 'scale(1.5)';
+                    cursor.style.backgroundColor = 'rgba(0, 166, 251, 0.2)';
+                });
+                
+                el.addEventListener('mouseleave', function() {
+                    cursor.style.transform = 'scale(1)';
+                    cursor.style.backgroundColor = 'transparent';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
