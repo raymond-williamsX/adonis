@@ -216,37 +216,45 @@
     
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 flex items-center justify-center">
-                    <div class="text-2xl font-['Pacifico'] text-primary">A</div>
-                </div>
-                <span class="text-xl font-bold">ADONIS</span>
+          <!-- Logo -->
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <div class="text-2xl font-['Pacifico'] text-primary">A</div>
             </div>
-            
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="hover:text-primary transition-colors duration-300">Home</a>
-                <a href="index2.html" class="hover:text-primary transition-colors duration-300">About</a>
-                <a href="#services" class="hover:text-primary transition-colors duration-300">Services</a>
-                <a href="#portfolio" class="hover:text-primary transition-colors duration-300">Portfolio</a>
-                <a href="#contact" class="hover:text-primary transition-colors duration-300">Contact</a>
-            </div>
-            
-            <button id="mobile-menu-btn" class="md:hidden w-6 h-6 flex items-center justify-center">
-                <i class="ri-menu-line text-xl"></i>
-            </button>
+            <span class="text-xl font-bold">ADONIS</span>
+          </div>
+      
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="hover:text-primary transition-colors duration-300">Home</a>
+            <a href="index2.html" class="hover:text-primary transition-colors duration-300">About</a>
+            <a href="#services" class="hover:text-primary transition-colors duration-300">Services</a>
+            <a href="#portfolio" class="hover:text-primary transition-colors duration-300">Portfolio</a>
+            <a href="#contact" class="hover:text-primary transition-colors duration-300">Contact</a>
+          </div>
+      
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden w-6 h-6 flex items-center justify-center">
+            <i class="ri-menu-line text-xl"></i>
+          </button>
         </div>
-        
-        <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-black bg-opacity-95 backdrop-blur-lg transform -translate-y-full opacity-0 transition-all duration-300">
-            <div class="px-6 py-8 space-y-4">
-                <a href="#home" class="block py-2 hover:text-primary transition-colors duration-300">Home</a>
-                <a href="index2.html" class="block py-2 hover:text-primary transition-colors duration-300">About</a>
-                <a href="#services" class="block py-2 hover:text-primary transition-colors duration-300">Services</a>
-                <a href="#portfolio" class="block py-2 hover:text-primary transition-colors duration-300">Portfolio</a>
-                <a href="#contact" class="block py-2 hover:text-primary transition-colors duration-300">Contact</a>
-            </div>
+      
+        <!-- Mobile Slide-in Menu -->
+        <div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-black bg-opacity-95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 z-[1001] p-6 space-y-6">
+          <!-- Close Button -->
+          <button id="close-menu-btn" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
+      
+          <a href="#home" class="block py-2 hover:text-primary transition-colors duration-300">Home</a>
+          <a href="index2.html" class="block py-2 hover:text-primary transition-colors duration-300">About</a>
+          <a href="#services" class="block py-2 hover:text-primary transition-colors duration-300">Services</a>
+          <a href="#portfolio" class="block py-2 hover:text-primary transition-colors duration-300">Portfolio</a>
+          <a href="#contact" class="block py-2 hover:text-primary transition-colors duration-300">Contact</a>
         </div>
-    </nav>
-
+      
+        <!-- Overlay -->
+        <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-[1000]"></div>
+      </nav>
+      
     <section id="home" class="relative min-h-screen hero-gradient flex items-center justify-center overflow-hidden">
         <div class="particle" style="left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
         <div class="particle" style="left: 20%; width: 6px; height: 6px; animation-delay: 2s;"></div>
@@ -813,54 +821,55 @@
     </button>
 
     <script id="navigation-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.getElementById('navbar');
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            let isMenuOpen = false;
-
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('nav-solid');
-                } else {
-                    navbar.classList.remove('nav-solid');
-                }
+        document.addEventListener('DOMContentLoaded', function () {
+          const navbar = document.getElementById('navbar');
+          const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const closeMenuBtn = document.getElementById('close-menu-btn');
+          const menuOverlay = document.getElementById('menu-overlay');
+      
+          // Sticky navbar effect
+          window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+              navbar.classList.add('nav-solid');
+            } else {
+              navbar.classList.remove('nav-solid');
+            }
+          });
+      
+          // Open Menu
+          mobileMenuBtn.addEventListener('click', function () {
+            mobileMenu.classList.remove('translate-x-full');
+            menuOverlay.classList.add('opacity-100', 'pointer-events-auto');
+          });
+      
+          // Close Menu
+          function closeMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            menuOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+          }
+      
+          closeMenuBtn.addEventListener('click', closeMenu);
+          menuOverlay.addEventListener('click', closeMenu);
+      
+          // Close when clicking a link
+          document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+          });
+      
+          // Smooth scroll
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const target = document.querySelector(this.getAttribute('href'));
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
             });
-
-            mobileMenuBtn.addEventListener('click', function() {
-                isMenuOpen = !isMenuOpen;
-                if (isMenuOpen) {
-                    mobileMenu.style.transform = 'translateY(0)';
-                    mobileMenu.style.opacity = '1';
-                    mobileMenuBtn.innerHTML = '<i class="ri-close-line text-xl"></i>';
-                } else {
-                    mobileMenu.style.transform = 'translateY(-100%)';
-                    mobileMenu.style.opacity = '0';
-                    mobileMenuBtn.innerHTML = '<i class="ri-menu-line text-xl"></i>';
-                }
-            });
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        if (isMenuOpen) {
-                            mobileMenu.style.transform = 'translateY(-100%)';
-                            mobileMenu.style.opacity = '0';
-                            mobileMenuBtn.innerHTML = '<i class="ri-menu-line text-xl"></i>';
-                            isMenuOpen = false;
-                        }
-                    }
-                });
-            });
+          });
         });
-    </script>
-
+      </script>
+      
     <script id="scroll-animations-script">
         document.addEventListener('DOMContentLoaded', function() {
             const observerOptions = {
