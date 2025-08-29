@@ -267,9 +267,11 @@
         <div class="particle" style="left: 80%; width: 5px; height: 5px; animation-delay: 4s;"></div>
         <div class="particle" style="left: 90%; width: 4px; height: 4px; animation-delay: 1s;"></div>
         
-        <div class="text-center z-10 px-6 max-w-4xl mx-auto">
+        <!-- CHANGED: make text left-aligned but keep centered vertically.
+             Using a constrained container and left alignment. On small screens it will still look good. -->
+        <div class="z-10 px-6 max-w-4xl mx-auto md:mx-0 md:pl-16 text-left">
             <div class="floating-animation mb-8">
-                <div class="w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+                <div class="w-24 h-24 mx-auto md:mx-0 mb-6 flex items-center justify-center">
                     <div class="w-full h-full object-contain">
                     <img src="./image assets/dark_circle.jpg" alt="Adonis Logo">  
                     </div>
@@ -282,11 +284,11 @@
                 <span class="text-primary">Future</span>
             </h1>
             
-            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto text-reveal">
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl text-reveal">
                 We craft innovative digital experiences that transform businesses and inspire users through cutting-edge technology and creative design.
             </p>
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center text-reveal">
+            <div class="flex flex-col sm:flex-row gap-4 justify-start text-reveal">
                 <button class="px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap">
                     Get Started
                 </button>
@@ -698,13 +700,14 @@
                 </div>
                 
                 <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <!-- FORM: action uses your formspree url. JS sends via fetch and shows a status message. -->
                     <form class="space-y-6"
                         action="https://formspree.io/f/xanbggaz"
                         method="POST"
                         >
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="relative">
-                                <input type="text" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="firstname"required>
+                                <input type="text" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="firstname" required>
                                 <label class="floating-label">First Name</label>
                             </div>
                             <div class="relative">
@@ -719,12 +722,14 @@
                         </div>
                         
                         <div class="relative">
-                            <input type="tel" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" ">
+                            <!-- added name so phone is sent -->
+                            <input type="tel" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="phone">
                             <label class="floating-label">Phone Number</label>
                         </div>
                         
                         <div class="relative">
-                            <select class="form-input w-full px-4 py-3 !rounded-lg border-none pr-8" required>
+                            <!-- added name attribute for service selection -->
+                            <select class="form-input w-full px-4 py-3 !rounded-lg border-none pr-8" name="service" required>
                                 <option value="">Select a service</option>
                                 <option value="web">Web Development</option>
                                 <option value="mobile">Mobile Development</option>
@@ -739,6 +744,9 @@
                             <textarea class="form-input w-full px-4 py-3 !rounded-lg border-none h-32 resize-none" placeholder=" " name="message" required></textarea>
                             <label class="floating-label">Project Details</label>
                         </div>
+
+                        <!-- status message -->
+                        <div id="form-status" class="text-sm text-center hidden"></div>
                         
                         <button type="submit" class="w-full px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap">
                             Send Message
@@ -973,28 +981,60 @@
             });
 
             const contactForm = document.querySelector('form');
-            contactForm.addEventListener('submit', function(e) {
+            const statusEl = document.getElementById('form-status');
+
+            contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                
+
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.textContent;
-                
+
+                // show sending state
                 submitBtn.textContent = 'Sending...';
                 submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    submitBtn.textContent = 'Message Sent!';
-                    submitBtn.classList.add('bg-green-600');
-                    submitBtn.classList.remove('bg-primary');
-                    
+
+                // collect form data and send to Formspree
+                const formData = new FormData(contactForm);
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        // success
+                        statusEl.classList.remove('hidden');
+                        statusEl.textContent = 'message was sent :)';
+                        statusEl.classList.remove('text-red-400');
+                        statusEl.classList.add('text-green-400');
+
+                        // reset form
+                        contactForm.reset();
+                    } else {
+                        // error path
+                        let data;
+                        try { data = await response.json(); } catch (err) { data = null; }
+                        statusEl.classList.remove('hidden');
+                        statusEl.textContent = 'something went wrong :(';
+                        statusEl.classList.remove('text-green-400');
+                        statusEl.classList.add('text-red-400');
+                    }
+                } catch (err) {
+                    statusEl.classList.remove('hidden');
+                    statusEl.textContent = 'something went wrong :(';
+                    statusEl.classList.remove('text-green-400');
+                    statusEl.classList.add('text-red-400');
+                } finally {
+                    // restore button after short delay so user can see status
                     setTimeout(() => {
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
-                        submitBtn.classList.remove('bg-green-600');
-                        submitBtn.classList.add('bg-primary');
-                        contactForm.reset();
-                    }, 2000);
-                }, 1500);
+                    }, 1500);
+                }
             });
         });
     </script>
