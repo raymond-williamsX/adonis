@@ -4,7 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADONIS - Shaping Digital Future</title>
+    <meta name="description" content="ADONIS builds high-converting websites, apps, and digital products for ambitious businesses. Get a free strategy call and launch faster with confidence.">
+    <meta name="keywords" content="web development, ui ux design, mobile app development, digital agency, Abuja, Nigeria">
+    <meta name="author" content="ADONIS">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ADONIS | High-Converting Digital Products">
+    <meta property="og:description" content="We help businesses launch websites and products that convert more visitors into customers.">
+    <meta property="og:image" content="./image assets/adonis_blue.jpg">
+    <meta property="og:url" content="https://adonis.example.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ADONIS | High-Converting Digital Products">
+    <meta name="twitter:description" content="Get strategy, design, and development that moves your business forward.">
+    <meta name="twitter:image" content="./image assets/adonis_blue.jpg">
+    <link rel="canonical" href="https://adonis.example.com/">
     <meta name="google-site-verification" content="mazxvnU0eHQaitoSxtpQtK2RlxtVHLhjW2mLoCPMaaE" />
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HPD7RGVJ2D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HPD7RGVJ2D', { 'linker': { 'domains': ['adonisoftware.tech'] } });
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w07aevb2kx");
+</script>
+    </script>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
      <link rel="icon" type="image/jpg" href="./image assets/dark_circle.jpg" />
     <script>
@@ -211,7 +241,53 @@
             background: #0A0A0A;
             padding: 0 0.5rem;
         }
+
+        .sticky-mobile-cta {
+            backdrop-filter: blur(12px);
+        }
+
+        .faq-item button[aria-expanded="true"] i {
+            transform: rotate(180deg);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .custom-cursor {
+                display: none;
+            }
+        }
     </style>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "ADONIS",
+            "image": "./image assets/adonis_blue.jpg",
+            "url": "https://adonis.example.com/",
+            "email": "adonisoftware@gmail.com",
+            "telephone": "+2347041142662",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Abuja",
+                "addressCountry": "NG"
+            },
+            "areaServed": "Global",
+            "serviceType": [
+                "Web Development",
+                "Mobile App Development",
+                "UI/UX Design",
+                "Cloud Solutions",
+                "Digital Marketing"
+            ]
+        }
+    </script>
 </head>
 <body>
     <div class="custom-cursor"></div>
@@ -223,16 +299,20 @@
             <div class="w-10 h-10 flex items-center justify-center">
   <img src="./image assets/dark_circle.jpg" alt="Adonis Logo" class="w-full h-full object-contain">
 </div>
-            <span class="text-xl font-bold">ADONIS</span>
+            <span class="text-xl font-bold tracking-tight">ADONIS</span>
           </div>
       
           <!-- Desktop Menu -->
           <div class="hidden md:flex items-center space-x-8">
-            <a href="#home" class="hover:text-primary transition-colors duration-300">Home</a>
-            <a href="index2.html" class="hover:text-primary transition-colors duration-300">About</a>
-            <a href="#services" class="hover:text-primary transition-colors duration-300">Services</a>
-            <a href="#portfolio" class="hover:text-primary transition-colors duration-300">Portfolio</a>
-            <a href="#contact" class="hover:text-primary transition-colors duration-300">Contact</a>
+            <a href="#home" class="text-sm font-medium hover:text-primary transition-colors duration-300">Home</a>
+            <a href="#about" class="text-sm font-medium hover:text-primary transition-colors duration-300">About</a>
+            <a href="#services" class="text-sm font-medium hover:text-primary transition-colors duration-300">Services</a>
+            <a href="#portfolio" class="text-sm font-medium hover:text-primary transition-colors duration-300">Portfolio</a>
+            <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors duration-300">Contact</a>
+            <a href="https://wa.me/2347041142662?text=Hi%20ADONIS%2C%20I%27m%20interested%20in%20discussing%20my%20project." target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold !rounded-button transition-all duration-300" onclick="gtag('event', 'whatsapp_click', {'placement': 'navbar_desktop'})">
+              <i class="ri-whatsapp-line"></i>
+              <span>WhatsApp</span>
+            </a>
           </div>
       
           <!-- Mobile Menu Button -->
@@ -247,10 +327,17 @@
           <button id="close-menu-btn" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
       
           <a href="#home" class="block py-2 hover:text-primary transition-colors duration-300">Home</a>
-          <a href="index2.html" class="block py-2 hover:text-primary transition-colors duration-300">About</a>
+          <a href="#about" class="block py-2 hover:text-primary transition-colors duration-300">About</a>
           <a href="#services" class="block py-2 hover:text-primary transition-colors duration-300">Services</a>
           <a href="#portfolio" class="block py-2 hover:text-primary transition-colors duration-300">Portfolio</a>
           <a href="#contact" class="block py-2 hover:text-primary transition-colors duration-300">Contact</a>
+          <div class="border-t border-gray-700 mt-6 pt-6 space-y-3">
+            <a href="https://wa.me/2347041142662?text=Hi%20ADONIS%2C%20I%27m%20interested%20in%20discussing%20my%20project." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-2 w-full px-5 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold !rounded-button transition-all duration-300" onclick="gtag('event', 'whatsapp_click', {'placement': 'navbar_mobile'})">
+              <i class="ri-whatsapp-line"></i>
+              <span>WhatsApp</span>
+            </a>
+            <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="block text-center px-5 py-3 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300">Book a Call</a>
+          </div>
         </div>
       
         <!-- Overlay -->
@@ -280,21 +367,21 @@
                 </div>
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-black mb-6 text-reveal">
-                Shaping Digital
-                <span class="text-primary">Future</span>
+            <h1 class="text-5xl md:text-7xl font-black mb-8 text-reveal leading-tight">
+                Build Faster.
+                <br/><span class="text-primary bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Convert Better.</span>
             </h1>
             
-            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl text-reveal">
-                We craft innovative digital experiences that transform businesses and inspire users through cutting-edge technology and creative design.
+            <p class="text-lg md:text-2xl text-gray-200 mb-12 max-w-2xl text-reveal leading-relaxed font-light">
+                Design and ship conversion-focused digital products that turn traffic into qualified leads, paying customers, and sustainable growth.
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-start text-reveal">
-                <a href="#contact" class="px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap">
-                    Get Started
+                <a href="#contact" class="px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap shadow-lg" onclick="gtag('event', 'hero_cta_click', {'button': 'strategy_call'})">
+                    Get Free Strategy Call
                 </a>
-                <a href="#portfolio" class="px-8 py-4 border border-primary text-primary font-semibold !rounded-button hover:bg-primary hover:text-white transition-all duration-300 whitespace-nowrap">
-                    View Portfolio
+                <a href="https://wa.me/2347041142662?text=Hi%20ADONIS%2C%20I%27m%20interested%20in%20discussing%20my%20project." target="_blank" rel="noopener noreferrer" class="px-8 py-4 border-2 border-green-600 text-green-400 font-semibold !rounded-button hover:bg-green-600 hover:text-white transition-all duration-300 whitespace-nowrap" onclick="gtag('event', 'hero_cta_click', {'button': 'whatsapp'})">
+                    Message via WhatsApp
                 </a>
             </div>
         </div>
@@ -302,6 +389,18 @@
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
             <div class="w-6 h-6 flex items-center justify-center">
                 <i class="ri-arrow-down-line text-2xl text-primary"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 px-6 bg-black border-y border-gray-800">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm uppercase tracking-[0.3em] text-gray-400 mb-6 text-reveal">Trusted By Growth-Focused Teams</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-reveal">
+                <div class="glass-card py-4 px-3 !rounded-xl text-sm text-gray-300">Fintech Teams</div>
+                <div class="glass-card py-4 px-3 !rounded-xl text-sm text-gray-300">E-commerce Brands</div>
+                <div class="glass-card py-4 px-3 !rounded-xl text-sm text-gray-300">Health Startups</div>
+                <div class="glass-card py-4 px-3 !rounded-xl text-sm text-gray-300">Education Platforms</div>
             </div>
         </div>
     </section>
@@ -483,7 +582,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20interface%20with%20clean%20design%20and%20product%20showcase%20on%20laptop%20screen%20in%20minimalist%20office%20setting%20with%20soft%20lighting%20and%20professional%20atmosphere&width=400&height=300&seq=portfolio1&orientation=landscape" alt="E-commerce Platform" class="w-full h-48 object-cover object-top">
+                    <img src="./image assets/adonis_blue.jpg" alt="E-commerce platform dashboard redesign" class="w-full h-48 object-cover object-top" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
                         <p class="text-gray-400 mb-4">Modern online shopping experience with advanced features</p>
@@ -496,7 +595,7 @@
                 </div>
                 
                 <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="https://readdy.ai/api/search-image?query=mobile%20banking%20app%20interface%20displayed%20on%20smartphone%20with%20modern%20UI%20design%20and%20financial%20dashboard%20in%20professional%20business%20environment%20with%20clean%20background&width=400&height=300&seq=portfolio2&orientation=landscape" alt="Mobile Banking App" class="w-full h-48 object-cover object-top">
+                    <img src="./image assets/features.png" alt="Mobile banking app UI prototype" class="w-full h-48 object-cover object-top" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Mobile Banking App</h3>
                         <p class="text-gray-400 mb-4">Secure and intuitive banking application</p>
@@ -509,7 +608,7 @@
                 </div>
                 
                 <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="https://readdy.ai/api/search-image?query=healthcare%20management%20system%20dashboard%20on%20computer%20screen%20with%20medical%20data%20visualization%20and%20patient%20records%20in%20modern%20hospital%20office%20with%20clean%20professional%20lighting&width=400&height=300&seq=portfolio3&orientation=landscape" alt="Healthcare Management" class="w-full h-48 object-cover object-top">
+                    <img src="./image assets/adonis_white.jpg" alt="Healthcare management platform interface" class="w-full h-48 object-cover object-top" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Healthcare Management</h3>
                         <p class="text-gray-400 mb-4">Comprehensive patient management system</p>
@@ -522,7 +621,7 @@
                 </div>
                 
                 <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="https://readdy.ai/api/search-image?query=real%20estate%20website%20interface%20showing%20property%20listings%20and%20search%20functionality%20on%20desktop%20computer%20in%20modern%20real%20estate%20office%20with%20professional%20atmosphere&width=400&height=300&seq=portfolio4&orientation=landscape" alt="Real Estate Platform" class="w-full h-48 object-cover object-top">
+                    <img src="./image assets/logo_blue.png" alt="Real estate listing platform redesign" class="w-full h-48 object-cover object-top" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Real Estate Platform</h3>
                         <p class="text-gray-400 mb-4">Advanced property search and listing platform</p>
@@ -535,7 +634,7 @@
                 </div>
                 
                 <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="https://readdy.ai/api/search-image?query=fitness%20tracking%20mobile%20app%20interface%20with%20workout%20analytics%20and%20health%20metrics%20displayed%20on%20smartphone%20in%20modern%20gym%20environment%20with%20clean%20lighting&width=400&height=300&seq=portfolio5&orientation=landscape" alt="Fitness Tracking App" class="w-full h-48 object-cover object-top">
+                    <img src="./image assets/white_circle.jpg" alt="Fitness tracking app analytics screen" class="w-full h-48 object-cover object-top" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Fitness Tracking App</h3>
                         <p class="text-gray-400 mb-4">Comprehensive health and fitness monitoring</p>
@@ -548,7 +647,7 @@
                 </div>
                 
                 <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="https://readdy.ai/api/search-image?query=education%20learning%20management%20system%20dashboard%20with%20online%20courses%20and%20student%20progress%20tracking%20on%20laptop%20screen%20in%20modern%20classroom%20setting&width=400&height=300&seq=portfolio6&orientation=landscape" alt="Learning Management System" class="w-full h-48 object-cover object-top">
+                    <img src="./image assets/name_blue.png" alt="Learning management dashboard and progress view" class="w-full h-48 object-cover object-top" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Learning Management System</h3>
                         <p class="text-gray-400 mb-4">Interactive online education platform</p>
@@ -584,7 +683,7 @@
                                 "ADONIS transformed our digital presence completely. Their team delivered a stunning website that not only looks amazing but also performs exceptionally well. Our online sales increased by 300% within the first quarter."
                             </p>
                             <div class="flex items-center justify-center space-x-4">
-                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20executive%20headshot%20portrait%20of%20confident%20woman%20in%20corporate%20attire%20with%20clean%20background%20and%20professional%20lighting&width=80&height=80&seq=testimonial1&orientation=squarish" alt="Sarah Johnson" class="w-16 h-16 !rounded-full object-cover object-top">
+                                <img src="./image assets/dark_circle.jpg" alt="Sarah Johnson headshot" class="w-16 h-16 !rounded-full object-cover object-top" loading="lazy">
                                 <div>
                                     <div class="font-semibold text-lg">Sarah Johnson</div>
                                     <div class="text-gray-400">CEO, TechStart Inc.</div>
@@ -602,7 +701,7 @@
                                 "Working with ADONIS was a game-changer for our mobile app development. They delivered a high-quality product on time and within budget. The user experience is fantastic, and our customers love it."
                             </p>
                             <div class="flex items-center justify-center space-x-4">
-                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20executive%20headshot%20portrait%20of%20confident%20man%20in%20suit%20with%20clean%20background%20and%20professional%20lighting&width=80&height=80&seq=testimonial2&orientation=squarish" alt="Michael Chen" class="w-16 h-16 !rounded-full object-cover object-top">
+                                <img src="./image assets/logo_black.png" alt="Michael Chen headshot" class="w-16 h-16 !rounded-full object-cover object-top" loading="lazy">
                                 <div>
                                     <div class="font-semibold text-lg">Michael Chen</div>
                                     <div class="text-gray-400">Founder, HealthTech Solutions</div>
@@ -620,7 +719,7 @@
                                 "The team at ADONIS exceeded our expectations in every way. Their attention to detail, technical expertise, and creative approach resulted in a platform that truly represents our brand and serves our users perfectly."
                             </p>
                             <div class="flex items-center justify-center space-x-4">
-                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20executive%20headshot%20portrait%20of%20confident%20woman%20with%20glasses%20in%20business%20attire%20with%20clean%20background&width=80&height=80&seq=testimonial3&orientation=squarish" alt="Emily Rodriguez" class="w-16 h-16 !rounded-full object-cover object-top">
+                                <img src="./image assets/logo_white.png" alt="Emily Rodriguez headshot" class="w-16 h-16 !rounded-full object-cover object-top" loading="lazy">
                                 <div>
                                     <div class="font-semibold text-lg">Emily Rodriguez</div>
                                     <div class="text-gray-400">Director, EduPlatform</div>
@@ -634,6 +733,89 @@
                     <button class="testimonial-dot w-3 h-3 !rounded-full bg-primary opacity-100 transition-opacity duration-300"></button>
                     <button class="testimonial-dot w-3 h-3 !rounded-full bg-gray-600 opacity-50 transition-opacity duration-300"></button>
                     <button class="testimonial-dot w-3 h-3 !rounded-full bg-gray-600 opacity-50 transition-opacity duration-300"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-20 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-reveal">Flexible <span class="text-primary">Packages</span></h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto text-reveal">Transparent starting ranges to help you choose the right launch path.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <p class="text-sm uppercase tracking-widest text-gray-400 mb-3">Starter</p>
+                    <h3 class="text-3xl font-bold mb-2">$1.2k+</h3>
+                    <p class="text-gray-400 mb-6">Perfect for new businesses that need a strong first digital presence.</p>
+                    <ul class="space-y-3 text-gray-300 mb-8">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Up to 5 pages</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Mobile responsive UI</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Lead form setup</li>
+                    </ul>
+                    <a href="#contact" class="inline-block px-6 py-3 border border-primary text-primary font-semibold !rounded-button hover:bg-primary hover:text-white transition-all duration-300">Choose Starter</a>
+                </div>
+                <div class="glass-card p-8 !rounded-xl text-reveal border border-primary neon-glow">
+                    <p class="text-sm uppercase tracking-widest text-primary mb-3">Growth</p>
+                    <h3 class="text-3xl font-bold mb-2">$2.8k+</h3>
+                    <p class="text-gray-400 mb-6">Built for teams that want measurable conversion improvement and scale.</p>
+                    <ul class="space-y-3 text-gray-300 mb-8">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Full conversion funnel</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Analytics and event tracking</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>SEO baseline setup</li>
+                    </ul>
+                    <a href="#contact" class="inline-block px-6 py-3 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300">Choose Growth</a>
+                </div>
+                <div class="glass-card p-8 !rounded-xl text-reveal">
+                    <p class="text-sm uppercase tracking-widest text-gray-400 mb-3">Scale</p>
+                    <h3 class="text-3xl font-bold mb-2">Custom</h3>
+                    <p class="text-gray-400 mb-6">For product teams needing advanced workflows and long-term iteration.</p>
+                    <ul class="space-y-3 text-gray-300 mb-8">
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Product strategy sprint</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Custom app/web architecture</li>
+                        <li class="flex items-center"><i class="ri-check-line text-primary mr-2"></i>Ongoing optimization support</li>
+                    </ul>
+                    <a href="#contact" class="inline-block px-6 py-3 border border-primary text-primary font-semibold !rounded-button hover:bg-primary hover:text-white transition-all duration-300">Book Discovery</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-reveal">Frequently Asked <span class="text-primary">Questions</span></h2>
+                <p class="text-xl text-gray-300 text-reveal">Everything you need to know before starting your project.</p>
+            </div>
+            <div class="space-y-4" id="faq-accordion">
+                <div class="faq-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <button type="button" class="w-full flex items-center justify-between px-6 py-5 text-left font-semibold" aria-expanded="false">
+                        <span>How quickly can we launch?</span>
+                        <i class="ri-arrow-down-s-line text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-gray-300">Most projects launch in 2 to 6 weeks depending on scope, integrations, and content readiness.</div>
+                </div>
+                <div class="faq-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <button type="button" class="w-full flex items-center justify-between px-6 py-5 text-left font-semibold" aria-expanded="false">
+                        <span>Do you work with both startups and established companies?</span>
+                        <i class="ri-arrow-down-s-line text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-gray-300">Yes. We tailor strategy and execution for startup speed or enterprise reliability.</div>
+                </div>
+                <div class="faq-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <button type="button" class="w-full flex items-center justify-between px-6 py-5 text-left font-semibold" aria-expanded="false">
+                        <span>Will my team be able to edit content after launch?</span>
+                        <i class="ri-arrow-down-s-line text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-gray-300">Absolutely. We structure projects so your team can maintain content and track results without friction.</div>
+                </div>
+                <div class="faq-item glass-card !rounded-xl overflow-hidden text-reveal">
+                    <button type="button" class="w-full flex items-center justify-between px-6 py-5 text-left font-semibold" aria-expanded="false">
+                        <span>How do you measure success?</span>
+                        <i class="ri-arrow-down-s-line text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="hidden px-6 pb-5 text-gray-300">We track lead quality, conversion rate, user behavior, and delivery milestones with clear reporting.</div>
                 </div>
             </div>
         </div>
@@ -659,7 +841,7 @@
                             </div>
                             <div>
                                 <div class="font-semibold">Email Us</div>
-                                <div class="text-gray-400">adonisoftware@gmail.com</div>
+                                <div class="text-gray-400">contact@adonisoftware.tech</div>
                             </div>
                         </div>
                         
@@ -702,36 +884,72 @@
                 
                 <div class="glass-card p-8 !rounded-xl text-reveal">
                     <!-- FORM: action uses your formspree url. JS sends via fetch and shows a status message. -->
-                    <form class="space-y-6"
+                    <form id="contact-form" class="space-y-6"
                         action="https://formspree.io/f/xanbggaz"
                         method="POST"
                         >
+                        <div class="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-4">
+                            <p class="text-sm text-gray-300">📊 We'll analyze your needs and qualify your project for the right package.</p>
+                        </div>
+                        
+                        <input type="hidden" name="source" id="lead-source" value="direct">
+                        <input type="hidden" name="campaign" id="lead-campaign" value="none">
+                        <input type="hidden" name="qualification_score" id="qualification-score" value="0">
+                        
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="relative">
-                                <input type="text" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="firstname" required>
-                                <label class="floating-label">First Name</label>
+                                <input id="firstname" type="text" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="firstname" required>
+                                <label class="floating-label" for="firstname">First Name</label>
                             </div>
                             <div class="relative">
-                                <input type="text" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="lastname" required>
-                                <label class="floating-label">Last Name</label>
+                                <input id="lastname" type="text" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="lastname" required>
+                                <label class="floating-label" for="lastname">Last Name</label>
                             </div>
                         </div>
                         
                         <div class="relative">
-                            <input type="email" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="email" required>
-                            <label class="floating-label">Email Address</label>
+                            <input id="email" type="email" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="email" required>
+                            <label class="floating-label" for="email">Email Address</label>
                         </div>
                         
                         <div class="relative">
-                            <!-- added name so phone is sent -->
-                            <input type="tel" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="phone">
-                            <label class="floating-label">Phone Number</label>
+                            <input id="phone" type="tel" class="form-input w-full px-4 py-3 !rounded-lg border-none" placeholder=" " name="phone">
+                            <label class="floating-label" for="phone">Phone Number (WhatsApp)</label>
                         </div>
                         
                         <div class="relative">
-                            <!-- added name attribute for service selection -->
-                            <select class="form-input w-full px-4 py-3 !rounded-lg border-none pr-8" name="service" required>
-                                <option value="">Select a service</option>
+                            <select id="company-size" class="form-input w-full px-4 py-3 !rounded-lg border-none pr-8" name="company_size" required onchange="updateLeadScore()">
+                                <option value="">Company Size</option>
+                                <option value="startup">Startup (1-10)</option>
+                                <option value="small">Small (11-50)</option>
+                                <option value="medium">Medium (51-200)</option>
+                                <option value="enterprise">Enterprise (200+)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="relative">
+                            <select id="budget-range" class="form-input w-full px-4 py-3 !rounded-lg border-none pr-8" name="budget_range" required onchange="updateLeadScore()">
+                                <option value="">Est. Budget</option>
+                                <option value="under-5k">Under $5K</option>
+                                <option value="5k-15k">$5K - $15K</option>
+                                <option value="15k-50k">$15K - $50K</option>
+                                <option value="50k-plus">$50K+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="relative">
+                            <select id="timeline" class="form-input w-full px-4 py-3 !rounded-lg border-none pr-8" name="timeline" required onchange="updateLeadScore()">
+                                <option value="">Timeline</option>
+                                <option value="asap">ASAP (0-2 weeks)</option>
+                                <option value="urgent">Urgent (2-4 weeks)</option>
+                                <option value="normal">Normal (1-3 months)</option>
+                                <option value="flexible">Flexible (3+ months)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="relative">
+                            <select class="form-input w-full px-4 py-3 !rounded-lg border-none pr-8" name="service" required onchange="updateLeadScore()">
+                                <option value="">Primary Service</option>
                                 <option value="web">Web Development</option>
                                 <option value="mobile">Mobile Development</option>
                                 <option value="design">UI/UX Design</option>
@@ -742,21 +960,53 @@
                         </div>
                         
                         <div class="relative">
-                            <textarea class="form-input w-full px-4 py-3 !rounded-lg border-none h-32 resize-none" placeholder=" " name="message" required></textarea>
-                            <label class="floating-label">Project Details</label>
+                            <textarea class="form-input w-full px-4 py-3 !rounded-lg border-none h-28 resize-none" placeholder=" " name="message" required></textarea>
+                            <label class="floating-label">Project Details & Goals</label>
+                        </div>
+                        
+                        <div id="lead-score-indicator" class="hidden px-4 py-3 bg-gradient-to-r from-primary/20 to-primary/5 border border-primary/30 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-semibold text-gray-300">Lead Quality Score</span>
+                                <span id="score-badge" class="px-3 py-1 bg-primary text-white text-xs font-bold !rounded-full">0%</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-700 rounded-full mt-2">
+                                <div id="score-bar" class="h-full bg-gradient-to-r from-primary to-blue-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
                         </div>
 
+                        <label class="flex items-start gap-3 text-sm text-gray-300">
+                            <input type="checkbox" id="privacy-consent" class="mt-1" required onchange="updateLeadScore()">
+                            <span>I agree to be contacted and accept the <a href="#" class="text-primary hover:underline">privacy policy</a>.</span>
+                        </label>
+
                         <!-- status message -->
-                        <div id="form-status" class="text-sm text-center hidden"></div>
+                        <div id="form-status" class="text-sm text-center hidden rounded-lg p-3"></div>
                         
-                        <button type="submit" class="w-full px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap">
-                            Send Message
+                        <button type="submit" class="w-full px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap shadow-lg" onclick="gtag('event', 'lead_form_submit_attempt', {'score': document.getElementById('qualification-score').value})">
+                            Send Inquiry & Get Free Evaluation
                         </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="sticky-mobile-cta fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-t border-gray-700 px-4 py-3 md:hidden shadow-2xl">
+        <div class="max-w-7xl mx-auto grid grid-cols-3 gap-2">
+            <a href="#contact" class="text-center px-3 py-3 bg-primary text-white text-sm font-semibold !rounded-button" onclick="gtag('event', 'sticky_cta_click', {'button': 'quote'});">
+              <i class="ri-message-line"></i>
+              <div>Quote</div>
+            </a>
+            <a href="https://wa.me/2347041142662?text=Hi%20ADONIS%2C%20I%27m%20interested%20in%20discussing%20my%20project." target="_blank" rel="noopener noreferrer" class="text-center px-3 py-3 bg-green-600 text-white text-sm font-semibold !rounded-button" onclick="gtag('event', 'sticky_cta_click', {'button': 'whatsapp'});">
+              <i class="ri-whatsapp-line"></i>
+              <div>Chat</div>
+            </a>
+            <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="text-center px-3 py-3 border border-primary text-primary text-sm font-semibold !rounded-button" onclick="gtag('event', 'sticky_cta_click', {'button': 'call'});">
+              <i class="ri-calendar-line"></i>
+              <div>Call</div>
+            </a>
+        </div>
+    </div>
 
     <footer class="bg-black py-12 px-6 border-t border-gray-800">
         <div class="max-w-7xl mx-auto">
@@ -822,7 +1072,7 @@
             </div>
             
             <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">© 2025 ADONIS. All rights reserved.</p>
+                <p class="text-gray-400 text-sm">© 2026 ADONIS. All rights reserved.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Privacy Policy</a>
                     <a href="#" class="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Terms of Service</a>
@@ -967,9 +1217,117 @@
         });
     </script>
 
+    <script id="lead-qualification-script">
+        /**
+         * Lead Qualification Scoring System
+         * Calculates lead quality based on multiple factors
+         */
+        function updateLeadScore() {
+            const companySize = document.getElementById('company-size')?.value || '';
+            const budgetRange = document.getElementById('budget-range')?.value || '';
+            const timeline = document.getElementById('timeline')?.value || '';
+            const privacyConsent = document.getElementById('privacy-consent')?.checked || false;
+            
+            let score = 0;
+            const maxScore = 100;
+
+            // Company Size Scoring (25 points max)
+            const sizeScores = {
+                'startup': 20,
+                'small': 25,
+                'medium': 23,
+                'enterprise': 25
+            };
+            score += sizeScores[companySize] || 0;
+
+            // Budget Range Scoring (25 points max)
+            const budgetScores = {
+                'under-5k': 15,
+                '5k-15k': 22,
+                '15k-50k': 25,
+                '50k-plus': 25
+            };
+            score += budgetScores[budgetRange] || 0;
+
+            // Timeline Scoring (25 points max) - Urgency matters
+            const timelineScores = {
+                'asap': 25,
+                'urgent': 23,
+                'normal': 20,
+                'flexible': 15
+            };
+            score += timelineScores[timeline] || 0;
+
+            // Privacy Consent (25 points max)
+            if (privacyConsent) {
+                score += 25;
+            }
+
+            // Update hidden field
+            document.getElementById('qualification-score').value = score;
+
+            // Show/hide and update score indicator
+            const scoreIndicator = document.getElementById('lead-score-indicator');
+            const scoreBadge = document.getElementById('score-badge');
+            const scoreBar = document.getElementById('score-bar');
+
+            if (score > 0) {
+                scoreIndicator.classList.remove('hidden');
+                scoreBadge.textContent = score + '%';
+                scoreBar.style.width = score + '%';
+
+                // Change color based on score quality
+                if (score >= 80) {
+                    scoreBar.className = 'h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full transition-all duration-300';
+                    scoreBadge.className = 'px-3 py-1 bg-green-600 text-white text-xs font-bold !rounded-full';
+                } else if (score >= 60) {
+                    scoreBar.className = 'h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full transition-all duration-300';
+                    scoreBadge.className = 'px-3 py-1 bg-blue-600 text-white text-xs font-bold !rounded-full';
+                } else if (score >= 40) {
+                    scoreBar.className = 'h-full bg-gradient-to-r from-amber-500 to-orange-400 rounded-full transition-all duration-300';
+                    scoreBadge.className = 'px-3 py-1 bg-amber-600 text-white text-xs font-bold !rounded-full';
+                } else {
+                    scoreBar.className = 'h-full bg-gradient-to-r from-red-500 to-pink-400 rounded-full transition-all duration-300';
+                    scoreBadge.className = 'px-3 py-1 bg-red-600 text-white text-xs font-bold !rounded-full';
+                }
+            } else {
+                scoreIndicator.classList.add('hidden');
+            }
+
+            // Track score change
+            if (typeof window.gtag === 'function') {
+                gtag('event', 'lead_score_updated', {
+                    'lead_score': score,
+                    'company_size': companySize,
+                    'budget': budgetRange,
+                    'timeline': timeline
+                });
+            }
+        }
+    </script>
+
     <script id="form-interactions-script">
         document.addEventListener('DOMContentLoaded', function() {
             const formInputs = document.querySelectorAll('.form-input');
+            const pageUrl = new URL(window.location.href);
+            const source = pageUrl.searchParams.get('utm_source') || 'direct';
+            const campaign = pageUrl.searchParams.get('utm_campaign') || 'none';
+            const sourceField = document.getElementById('lead-source');
+            const campaignField = document.getElementById('lead-campaign');
+
+            if (sourceField) {
+                sourceField.value = source;
+            }
+            if (campaignField) {
+                campaignField.value = campaign;
+            }
+
+            // Safe tracking wrapper so the page works even before GA is configured.
+            function trackEvent(eventName, eventData) {
+                if (typeof window.gtag === 'function') {
+                    window.gtag('event', eventName, eventData || {});
+                }
+            }
             
             formInputs.forEach(input => {
                 input.addEventListener('focus', function() {
@@ -981,11 +1339,47 @@
                 });
             });
 
-            const contactForm = document.querySelector('form');
+            const contactForm = document.getElementById('contact-form');
             const statusEl = document.getElementById('form-status');
+
+            document.querySelectorAll('a[href="#contact"]').forEach(function(cta) {
+                cta.addEventListener('click', function() {
+                    trackEvent('cta_click', { placement: 'contact_section' });
+                });
+            });
+
+            document.querySelectorAll('a[href^="https://calendly.com/"]').forEach(function(cta) {
+                cta.addEventListener('click', function() {
+                    trackEvent('booking_click', { placement: 'sitewide' });
+                });
+            });
+
+            document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(cta) {
+                cta.addEventListener('click', function() {
+                    const placement = this.classList.contains('ri-whatsapp-line') ? 'whatsapp_widget' : 
+                                     this.textContent.includes('WhatsApp') ? 'whatsapp_cta' : 'whatsapp_link';
+                    trackEvent('whatsapp_click', { 
+                        placement: placement,
+                        phone: '2347041142662'
+                    });
+                });
+            });
 
             contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                
+                const leadScore = document.getElementById('qualification-score').value || '0';
+                const companySize = document.getElementById('company-size')?.value || '';
+                const budgetRange = document.getElementById('budget-range')?.value || '';
+                const timeline = document.getElementById('timeline')?.value || '';
+
+                trackEvent('lead_form_submit_started', { 
+                    form_id: 'contact-form',
+                    lead_score: leadScore,
+                    company_size: companySize,
+                    budget_range: budgetRange,
+                    timeline: timeline
+                });
 
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.textContent;
@@ -1009,33 +1403,90 @@
                     if (response.ok) {
                         // success
                         statusEl.classList.remove('hidden');
-                        statusEl.textContent = 'message was sent :)';
                         statusEl.classList.remove('text-red-400');
-                        statusEl.classList.add('text-green-400');
+                        statusEl.classList.add('text-green-400', 'bg-green-600/20', 'border', 'border-green-600/50');
+                        
+                        // Personalized success message based on lead score
+                        if (leadScore >= 80) {
+                            statusEl.textContent = '✓ Excellent! We\'ll fast-track your inquiry. Expect contact within 2 hours.';
+                        } else if (leadScore >= 60) {
+                            statusEl.textContent = '✓ Thanks! We\'ll review your inquiry and contact you soon.';
+                        } else {
+                            statusEl.textContent = '✓ Message received! We\'ll follow up within 1-2 business days.';
+                        }
 
-                        // reset form
-                        contactForm.reset();
+                        trackEvent('lead_form_completed', { 
+                            form_id: 'contact-form', 
+                            source: source, 
+                            campaign: campaign,
+                            lead_score: leadScore
+                        });
+
+                        // Send conversion to Clarity and GA4
+                        if (typeof window.gtag === 'function') {
+                            gtag('event', 'purchase', {
+                                'transaction_id': 'form-submission-' + Date.now(),
+                                'value': leadScore,
+                                'currency': 'USD'
+                            });
+                        }
+
+                        // reset form after 3 seconds
+                        setTimeout(() => {
+                            contactForm.reset();
+                            updateLeadScore();
+                            statusEl.classList.add('hidden');
+                        }, 3000);
                     } else {
                         // error path
                         let data;
                         try { data = await response.json(); } catch (err) { data = null; }
                         statusEl.classList.remove('hidden');
-                        statusEl.textContent = 'something went wrong :(';
                         statusEl.classList.remove('text-green-400');
-                        statusEl.classList.add('text-red-400');
+                        statusEl.classList.add('text-red-400', 'bg-red-600/20', 'border', 'border-red-600/50');
+                        statusEl.textContent = '❌ Submission failed. Please try again or message us on WhatsApp.';
+                        trackEvent('lead_form_error', { error_code: response.status });
                     }
                 } catch (err) {
                     statusEl.classList.remove('hidden');
-                    statusEl.textContent = 'something went wrong :(';
                     statusEl.classList.remove('text-green-400');
-                    statusEl.classList.add('text-red-400');
+                    statusEl.classList.add('text-red-400', 'bg-red-600/20', 'border', 'border-red-600/50');
+                    statusEl.textContent = '❌ Network error. Please check your connection and try again.';
+                    trackEvent('lead_form_network_error', { error_message: err.message });
                 } finally {
                     // restore button after short delay so user can see status
                     setTimeout(() => {
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
-                    }, 1500);
+                    }, 2000);
                 }
+            });
+        });
+    </script>
+
+    <script id="faq-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(function(item) {
+                const button = item.querySelector('button');
+                const body = item.querySelector('button + div');
+
+                button.addEventListener('click', function() {
+                    const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+                    faqItems.forEach(function(otherItem) {
+                        const otherBtn = otherItem.querySelector('button');
+                        const otherBody = otherItem.querySelector('button + div');
+                        otherBtn.setAttribute('aria-expanded', 'false');
+                        otherBody.classList.add('hidden');
+                    });
+
+                    if (!isOpen) {
+                        button.setAttribute('aria-expanded', 'true');
+                        body.classList.remove('hidden');
+                    }
+                });
             });
         });
     </script>
@@ -1065,6 +1516,14 @@
     <script id="custom-cursor-script">
         document.addEventListener('DOMContentLoaded', function() {
             const cursor = document.querySelector('.custom-cursor');
+            const touchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+            if (touchDevice || !cursor) {
+                if (cursor) {
+                    cursor.style.display = 'none';
+                }
+                return;
+            }
             
             document.addEventListener('mousemove', function(e) {
                 cursor.style.left = e.clientX - 10 + 'px';
