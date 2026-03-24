@@ -34,7 +34,6 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "w07aevb2kx");
 </script>
-    </script>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
      <link rel="icon" type="image/jpg" href="./image assets/dark_circle.jpg" />
     <script>
@@ -77,11 +76,27 @@
             box-sizing: border-box;
         }
         
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #0A0A0A;
             color: white;
-            overflow-x: hidden;
+            position: relative;
+        }
+
+        img,
+        svg,
+        video,
+        canvas,
+        iframe {
+            max-width: 100%;
+            height: auto;
         }
         
         .hero-gradient {
@@ -262,6 +277,21 @@
             .custom-cursor {
                 display: none;
             }
+
+            .mobile-safe-heading {
+                letter-spacing: 0.12em;
+            }
+
+            .mobile-full-cta {
+                width: 100%;
+                white-space: normal;
+                text-align: center;
+            }
+
+            #mobile-menu {
+                width: min(85vw, 20rem);
+                overflow-y: auto;
+            }
         }
     </style>
     <script type="application/ld+json">
@@ -322,7 +352,7 @@
         </div>
       
         <!-- Mobile Slide-in Menu -->
-        <div id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-black bg-opacity-95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 z-[1001] p-6 space-y-6">
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full bg-black bg-opacity-95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 z-[1001] p-6 space-y-6">
           <!-- Close Button -->
           <button id="close-menu-btn" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
       
@@ -377,10 +407,10 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-start text-reveal">
-                <a href="#contact" class="px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap shadow-lg" onclick="gtag('event', 'hero_cta_click', {'button': 'strategy_call'})">
+                <a href="#contact" class="mobile-full-cta px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow shadow-lg" onclick="gtag('event', 'hero_cta_click', {'button': 'strategy_call'})">
                     Get Free Strategy Call
                 </a>
-                <a href="https://wa.me/2347041142662?text=Hi%20ADONIS%2C%20I%27m%20interested%20in%20discussing%20my%20project." target="_blank" rel="noopener noreferrer" class="px-8 py-4 border-2 border-green-600 text-green-400 font-semibold !rounded-button hover:bg-green-600 hover:text-white transition-all duration-300 whitespace-nowrap" onclick="gtag('event', 'hero_cta_click', {'button': 'whatsapp'})">
+                <a href="https://wa.me/2347041142662?text=Hi%20ADONIS%2C%20I%27m%20interested%20in%20discussing%20my%20project." target="_blank" rel="noopener noreferrer" class="mobile-full-cta px-8 py-4 border-2 border-green-600 text-green-400 font-semibold !rounded-button hover:bg-green-600 hover:text-white transition-all duration-300" onclick="gtag('event', 'hero_cta_click', {'button': 'whatsapp'})">
                     Message via WhatsApp
                 </a>
             </div>
@@ -395,7 +425,7 @@
 
     <section class="py-10 px-6 bg-black border-y border-gray-800">
         <div class="max-w-7xl mx-auto text-center">
-            <p class="text-sm uppercase tracking-[0.3em] text-gray-400 mb-6 text-reveal">Trusted By Growth-Focused Teams</p>
+            <p class="mobile-safe-heading text-sm uppercase md:tracking-[0.3em] text-gray-400 mb-6 text-reveal">Trusted By Growth-Focused Teams</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-reveal">
                 <div class="glass-card py-4 px-3 !rounded-xl text-sm text-gray-300">Fintech Teams</div>
                 <div class="glass-card py-4 px-3 !rounded-xl text-sm text-gray-300">E-commerce Brands</div>
@@ -982,7 +1012,7 @@
                         <!-- status message -->
                         <div id="form-status" class="text-sm text-center hidden rounded-lg p-3"></div>
                         
-                        <button type="submit" class="w-full px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow whitespace-nowrap shadow-lg" onclick="gtag('event', 'lead_form_submit_attempt', {'score': document.getElementById('qualification-score').value})">
+                        <button type="submit" class="w-full px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow shadow-lg" onclick="gtag('event', 'lead_form_submit_attempt', {'score': document.getElementById('qualification-score').value})">
                             Send Inquiry & Get Free Evaluation
                         </button>
                     </form>
@@ -1062,9 +1092,9 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
                     <p class="text-gray-400 mb-4">Stay updated with our latest news and insights.</p>
-                    <div class="flex gap-2">
+                    <div class="flex flex-col sm:flex-row gap-2">
                         <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 !rounded-lg text-sm focus:border-primary focus:outline-none">
-                        <button class="px-4 py-2 bg-primary text-white !rounded-button hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap">
+                        <button class="px-4 py-2 bg-primary text-white !rounded-button hover:bg-blue-600 transition-colors duration-300">
                             <i class="ri-send-plane-line"></i>
                         </button>
                     </div>
