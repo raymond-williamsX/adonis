@@ -289,9 +289,28 @@
             }
 
             #mobile-menu {
-                width: min(85vw, 20rem);
+                width: min(85vw, 20rem) !important;
                 overflow-y: auto;
+                min-width: 250px;
+                max-width: 100vw;
             }
+
+            #mobile-menu.translate-x-full {
+                transform: translateX(100%) !important;
+            }
+
+            #mobile-menu:not(.translate-x-full) {
+                transform: translateX(0) !important;
+            }
+        }
+
+        /* Menu overlay opacity states */
+        #menu-overlay.opacity-0 {
+            opacity: 0 !important;
+        }
+
+        #menu-overlay.opacity-100 {
+            opacity: 1 !important;
         }
     </style>
     <script type="application/ld+json">
@@ -352,7 +371,7 @@
         </div>
       
         <!-- Mobile Slide-in Menu -->
-        <div id="mobile-menu" class="fixed top-0 right-0 h-full bg-black bg-opacity-95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 z-[1001] p-6 space-y-6">
+        <div id="mobile-menu" class="fixed top-0 right-0 w-full h-full bg-black bg-opacity-95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 z-[999] p-6 space-y-6" style="max-width: 20rem; overflow-y: auto;">
           <!-- Close Button -->
           <button id="close-menu-btn" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
       
@@ -371,7 +390,7 @@
         </div>
       
         <!-- Overlay -->
-        <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-[1000]"></div>
+        <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40" style="will-change: opacity;"></div>
       </nav>
       
     <section id="home" class="relative min-h-screen hero-gradient flex items-center justify-center overflow-hidden">
@@ -1123,6 +1142,7 @@
           const mobileMenu = document.getElementById('mobile-menu');
           const closeMenuBtn = document.getElementById('close-menu-btn');
           const menuOverlay = document.getElementById('menu-overlay');
+          const body = document.body;
       
           // Sticky navbar effect
           window.addEventListener('scroll', function () {
@@ -1134,15 +1154,20 @@
           });
       
           // Open Menu
-          mobileMenuBtn.addEventListener('click', function () {
+          mobileMenuBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
             mobileMenu.classList.remove('translate-x-full');
+            menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
             menuOverlay.classList.add('opacity-100', 'pointer-events-auto');
+            body.style.overflow = 'hidden';
           });
       
           // Close Menu
           function closeMenu() {
             mobileMenu.classList.add('translate-x-full');
+            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
             menuOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+            body.style.overflow = '';
           }
       
           closeMenuBtn.addEventListener('click', closeMenu);
@@ -1150,7 +1175,11 @@
       
           // Close when clicking a link
           document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', closeMenu);
+            link.addEventListener('click', function(e) {
+              closeMenu();
+              // Allow smooth scroll to happen
+              e.stopPropagation();
+            });
           });
       
           // Smooth scroll
