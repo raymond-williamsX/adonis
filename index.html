@@ -81,7 +81,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     
 <!-- Apollo Verification Script-->
@@ -110,11 +110,29 @@ document.head.appendChild(o)}initApollo();</script>
             overflow-x: hidden;
         }
 
+        :root {
+            --bg-ink: #07070f;
+            --bg-accent: #15142a;
+            --panel-soft: rgba(247, 246, 255, 0.92);
+            --panel-edge: rgba(255, 255, 255, 0.18);
+            --ink-strong: #1a1733;
+            --ink-muted: #575474;
+            --brand: #00A6FB;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0A0A0A;
+            font-family: 'Manrope', sans-serif;
+            background:
+                radial-gradient(60rem 35rem at 15% 0%, rgba(248, 98, 181, 0.24), transparent 60%),
+                radial-gradient(50rem 30rem at 85% 20%, rgba(0, 166, 251, 0.2), transparent 60%),
+                linear-gradient(130deg, #0a0914 0%, #111027 45%, #080910 100%);
             color: white;
             position: relative;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Sora', sans-serif;
+            letter-spacing: -0.02em;
         }
 
         img,
@@ -127,9 +145,7 @@ document.head.appendChild(o)}initApollo();</script>
         }
         
         .hero-gradient {
-            background: linear-gradient(135deg, #051B2C 0%, #2A0944 50%, #051B2C 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease-in-out infinite;
+            background: linear-gradient(120deg, rgba(23, 20, 43, 0.95) 0%, rgba(8, 9, 18, 0.92) 100%);
         }
         
         @keyframes gradientShift {
@@ -172,16 +188,94 @@ document.head.appendChild(o)}initApollo();</script>
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             transition: all 0.3s ease;
         }
         
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 166, 251, 0.2);
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+            transform: translateY(-8px);
+            box-shadow: 0 24px 50px rgba(8, 160, 251, 0.2);
+        }
+
+        .hero-shell {
+            position: relative;
+            background: var(--panel-soft);
+            border: 1px solid var(--panel-edge);
+            box-shadow: 0 24px 80px rgba(8, 8, 20, 0.48);
+            color: var(--ink-strong);
+            overflow: hidden;
+        }
+
+        .hero-shell::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(35rem 20rem at 95% 10%, rgba(57, 66, 255, 0.18), transparent 60%),
+                radial-gradient(30rem 20rem at 15% 85%, rgba(0, 166, 251, 0.16), transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            background: rgba(0, 166, 251, 0.14);
+            color: #0b4b6d;
+        }
+
+        .hero-dashboard-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.93);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 14px;
+            box-shadow: 0 16px 32px rgba(4, 8, 28, 0.2);
+            color: #1d1c38;
+            z-index: 2;
+        }
+
+        .service-card-modern {
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 14px 34px rgba(5, 10, 26, 0.28);
+        }
+
+        .portfolio-card {
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 16px 34px rgba(3, 6, 20, 0.28);
+        }
+
+        .portfolio-media {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            transform: scale(1.01);
+            transition: transform 0.45s ease;
+        }
+
+        .portfolio-card:hover .portfolio-media {
+            transform: scale(1.08);
+        }
+
+        .section-soft {
+            position: relative;
+            background: linear-gradient(160deg, rgba(17, 18, 37, 0.98), rgba(8, 9, 18, 0.98));
+        }
+
+        .section-soft::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(45rem 25rem at 10% 20%, rgba(248, 98, 181, 0.06), transparent 70%);
+            pointer-events: none;
         }
         
         .neon-glow {
@@ -329,6 +423,15 @@ document.head.appendChild(o)}initApollo();</script>
             #mobile-menu:not(.translate-x-full) {
                 transform: translateX(0) !important;
             }
+
+            .hero-shell {
+                border-radius: 20px;
+            }
+
+            .hero-dashboard-card {
+                position: static;
+                margin-top: 0.75rem;
+            }
         }
 
         /* Menu overlay opacity states */
@@ -348,7 +451,7 @@ document.head.appendChild(o)}initApollo();</script>
             "image": "./image assets/adonis_blue.jpg",
             "url": "https://adonisoftware.tech/",
             "email": "contact@adonisoftware.tech",
-            "telephone": "+27715425289",
+            "telephone": "+2347041142662",
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Abuja",
@@ -420,7 +523,7 @@ document.head.appendChild(o)}initApollo();</script>
         <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40" style="will-change: opacity;"></div>
       </nav>
       
-    <section id="home" class="relative min-h-screen hero-gradient flex items-center justify-center overflow-hidden">
+    <section id="home" class="relative min-h-screen hero-gradient flex items-center justify-center overflow-hidden px-4 md:px-6 pt-20">
         <div class="particle" style="left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
         <div class="particle" style="left: 20%; width: 6px; height: 6px; animation-delay: 2s;"></div>
         <div class="particle" style="left: 30%; width: 3px; height: 3px; animation-delay: 4s;"></div>
@@ -431,34 +534,59 @@ document.head.appendChild(o)}initApollo();</script>
         <div class="particle" style="left: 80%; width: 5px; height: 5px; animation-delay: 4s;"></div>
         <div class="particle" style="left: 90%; width: 4px; height: 4px; animation-delay: 1s;"></div>
         
-        <!-- CHANGED: make text left-aligned but keep centered vertically.
-             Using a constrained container and left alignment. On small screens it will still look good. -->
-        <div class="z-10 px-6 max-w-4xl mx-auto md:mx-0 md:pl-16 text-left">
-            <div class="floating-animation mb-8">
-                <div class="w-24 h-24 mx-auto md:mx-0 mb-6 flex items-center justify-center">
-                    <div class="w-full h-full object-contain">
-                    <img src="./image assets/dark_circle.jpg" alt="Adonis Logo">  
+        <div class="hero-shell z-10 w-full max-w-7xl rounded-[28px] md:rounded-[34px] p-5 md:p-8 lg:p-10">
+            <div class="relative grid lg:grid-cols-2 gap-10 lg:gap-8 items-center">
+                <div class="text-left">
+                    <span class="hero-chip text-reveal"><i class="ri-flashlight-fill"></i> Designed for conversion-first growth</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold mt-5 mb-6 text-reveal leading-tight">
+                        The Modern Digital Partner For Ambitious Businesses.
+                    </h1>
+                    <p class="text-base md:text-xl text-[#4e4b6e] mb-8 max-w-xl text-reveal leading-relaxed">
+                        We design and build websites, apps, and product experiences that look elite and convert visitors into real opportunities.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 text-reveal">
+                        <a href="#contact" class="mobile-full-cta px-8 py-4 bg-[#1b1838] text-white font-semibold !rounded-button hover:bg-[#14112e] transition-all duration-300 shadow-lg" onclick="gtag('event', 'hero_cta_click', {'button': 'strategy_call'})">
+                            Start Your Project
+                        </a>
+                        <a href="https://wa.me/27715425289?text=Hi%20ADONIS%2C%20I%27m%20interested%20in%20discussing%20my%20project." target="_blank" rel="noopener noreferrer" class="mobile-full-cta px-8 py-4 border-2 border-[#1b1838] text-[#1b1838] font-semibold !rounded-button hover:bg-[#1b1838] hover:text-white transition-all duration-300" onclick="gtag('event', 'hero_cta_click', {'button': 'whatsapp'})">
+                            Message via WhatsApp
+                        </a>
                     </div>
-                    
+
+                    <div class="grid grid-cols-3 gap-4 pt-8 text-reveal">
+                        <div>
+                            <div class="text-2xl md:text-3xl font-bold text-[#1b1838]">150+</div>
+                            <div class="text-sm text-[#5d5a7a]">Projects</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-bold text-[#1b1838]">97%</div>
+                            <div class="text-sm text-[#5d5a7a]">Retention</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-bold text-[#1b1838]">4.9/5</div>
+                            <div class="text-sm text-[#5d5a7a]">Client Rating</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl font-black mb-8 text-reveal leading-tight">
-                Build Faster.
-                <br/><span class="text-primary bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Convert Better.</span>
-            </h1>
-            
-            <p class="text-lg md:text-2xl text-gray-200 mb-12 max-w-2xl text-reveal leading-relaxed font-light">
-                Design and ship conversion-focused digital products that turn traffic into qualified leads, paying customers, and sustainable growth.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-start text-reveal">
-                <a href="#contact" class="mobile-full-cta px-8 py-4 bg-primary text-white font-semibold !rounded-button hover:bg-blue-600 transition-all duration-300 neon-glow shadow-lg" onclick="gtag('event', 'hero_cta_click', {'button': 'strategy_call'})">
-                    Get Free Strategy Call
-                </a>
-                <a href="https://wa.me/27715425289?text=Hi%20ADONIS%2C%20I%27m%20interested%20in%20discussing%20my%20project." target="_blank" rel="noopener noreferrer" class="mobile-full-cta px-8 py-4 border-2 border-green-600 text-green-400 font-semibold !rounded-button hover:bg-green-600 hover:text-white transition-all duration-300" onclick="gtag('event', 'hero_cta_click', {'button': 'whatsapp'})">
-                    Message via WhatsApp
-                </a>
+
+                <div class="relative text-reveal">
+                    <div class="rounded-[26px] overflow-hidden border border-white/50 shadow-2xl">
+                        <img src="https://source.unsplash.com/960x1080/?startup,team,office" alt="Creative team planning digital product strategy" class="w-full h-[420px] md:h-[520px] object-cover" loading="lazy">
+                    </div>
+                    <div class="hero-dashboard-card p-4 w-full max-w-[210px] lg:max-w-[220px] lg:-left-12 lg:top-14">
+                        <div class="text-xs text-[#6c688a]">Conversion Lift</div>
+                        <div class="text-2xl font-extrabold mt-1">+41%</div>
+                        <div class="mt-2 h-2 rounded-full bg-gray-200 overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-[#00A6FB] to-[#4f46e5] w-[76%]"></div>
+                        </div>
+                    </div>
+                    <div class="hero-dashboard-card p-4 w-full max-w-[210px] lg:-right-10 lg:bottom-12">
+                        <div class="text-xs text-[#6c688a]">Qualified Leads</div>
+                        <div class="text-2xl font-extrabold mt-1">13.47%</div>
+                        <div class="text-xs text-emerald-600 font-semibold mt-1">Up from last month</div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -481,7 +609,7 @@ document.head.appendChild(o)}initApollo();</script>
         </div>
     </section>
 
-    <section id="about" class="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+    <section id="about" class="py-20 px-6 section-soft">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="space-y-8">
@@ -552,7 +680,7 @@ document.head.appendChild(o)}initApollo();</script>
         </div>
     </section>
 
-    <section id="services" class="py-20 px-6 bg-black">
+    <section id="services" class="py-20 px-6 section-soft">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-reveal">
@@ -564,7 +692,7 @@ document.head.appendChild(o)}initApollo();</script>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass-card p-8 !rounded-xl text-reveal">
+                <div class="glass-card service-card-modern p-8 !rounded-xl text-reveal">
                     <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
                         <i class="ri-smartphone-line text-3xl text-primary"></i>
                     </div>
@@ -577,7 +705,7 @@ document.head.appendChild(o)}initApollo();</script>
                     </ul>
                 </div>
                 
-                <div class="glass-card p-8 !rounded-xl text-reveal">
+                <div class="glass-card service-card-modern p-8 !rounded-xl text-reveal">
                     <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
                         <i class="ri-global-line text-3xl text-primary"></i>
                     </div>
@@ -590,7 +718,7 @@ document.head.appendChild(o)}initApollo();</script>
                     </ul>
                 </div>
                 
-                <div class="glass-card p-8 !rounded-xl text-reveal">
+                <div class="glass-card service-card-modern p-8 !rounded-xl text-reveal">
                     <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
                         <i class="ri-brush-line text-3xl text-primary"></i>
                     </div>
@@ -603,7 +731,7 @@ document.head.appendChild(o)}initApollo();</script>
                     </ul>
                 </div>
                 
-                <div class="glass-card p-8 !rounded-xl text-reveal">
+                <div class="glass-card service-card-modern p-8 !rounded-xl text-reveal">
                     <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
                         <i class="ri-cloud-line text-3xl text-primary"></i>
                     </div>
@@ -616,7 +744,7 @@ document.head.appendChild(o)}initApollo();</script>
                     </ul>
                 </div>
                 
-                <div class="glass-card p-8 !rounded-xl text-reveal">
+                <div class="glass-card service-card-modern p-8 !rounded-xl text-reveal">
                     <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
                         <i class="ri-search-line text-3xl text-primary"></i>
                     </div>
@@ -629,7 +757,7 @@ document.head.appendChild(o)}initApollo();</script>
                     </ul>
                 </div>
                 
-                <div class="glass-card p-8 !rounded-xl text-reveal">
+                <div class="glass-card service-card-modern p-8 !rounded-xl text-reveal">
                     <div class="w-16 h-16 flex items-center justify-center mb-6 bg-primary bg-opacity-20 !rounded-xl">
                         <i class="ri-settings-line text-3xl text-primary"></i>
                     </div>
@@ -645,7 +773,7 @@ document.head.appendChild(o)}initApollo();</script>
         </div>
     </section>
 
-    <section id="portfolio" class="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+    <section id="portfolio" class="py-20 px-6 section-soft">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-reveal">
@@ -657,8 +785,8 @@ document.head.appendChild(o)}initApollo();</script>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="./image assets/adonis_blue.jpg" alt="E-commerce platform dashboard redesign" class="w-full h-48 object-cover object-top" loading="lazy">
+                <div class="portfolio-item portfolio-card glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://source.unsplash.com/1200x900/?ecommerce,dashboard,analytics" alt="E-commerce platform dashboard redesign" class="portfolio-media" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
                         <p class="text-gray-400 mb-4">Modern online shopping experience with advanced features</p>
@@ -670,8 +798,8 @@ document.head.appendChild(o)}initApollo();</script>
                     </div>
                 </div>
                 
-                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="./image assets/features.png" alt="Mobile banking app UI prototype" class="w-full h-48 object-cover object-top" loading="lazy">
+                <div class="portfolio-item portfolio-card glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://source.unsplash.com/1200x900/?mobile,banking,app" alt="Mobile banking app UI prototype" class="portfolio-media" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Mobile Banking App</h3>
                         <p class="text-gray-400 mb-4">Secure and intuitive banking application</p>
@@ -683,8 +811,8 @@ document.head.appendChild(o)}initApollo();</script>
                     </div>
                 </div>
                 
-                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="./image assets/adonis_white.jpg" alt="Healthcare management platform interface" class="w-full h-48 object-cover object-top" loading="lazy">
+                <div class="portfolio-item portfolio-card glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://source.unsplash.com/1200x900/?healthcare,software,doctor" alt="Healthcare management platform interface" class="portfolio-media" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Healthcare Management</h3>
                         <p class="text-gray-400 mb-4">Comprehensive patient management system</p>
@@ -696,8 +824,8 @@ document.head.appendChild(o)}initApollo();</script>
                     </div>
                 </div>
                 
-                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="./image assets/logo_blue.png" alt="Real estate listing platform redesign" class="w-full h-48 object-cover object-top" loading="lazy">
+                <div class="portfolio-item portfolio-card glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://source.unsplash.com/1200x900/?real-estate,property,architecture" alt="Real estate listing platform redesign" class="portfolio-media" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Real Estate Platform</h3>
                         <p class="text-gray-400 mb-4">Advanced property search and listing platform</p>
@@ -709,8 +837,8 @@ document.head.appendChild(o)}initApollo();</script>
                     </div>
                 </div>
                 
-                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="./image assets/white_circle.jpg" alt="Fitness tracking app analytics screen" class="w-full h-48 object-cover object-top" loading="lazy">
+                <div class="portfolio-item portfolio-card glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://source.unsplash.com/1200x900/?fitness,app,smartwatch" alt="Fitness tracking app analytics screen" class="portfolio-media" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Fitness Tracking App</h3>
                         <p class="text-gray-400 mb-4">Comprehensive health and fitness monitoring</p>
@@ -722,8 +850,8 @@ document.head.appendChild(o)}initApollo();</script>
                     </div>
                 </div>
                 
-                <div class="portfolio-item glass-card !rounded-xl overflow-hidden text-reveal">
-                    <img src="./image assets/name_blue.png" alt="Learning management dashboard and progress view" class="w-full h-48 object-cover object-top" loading="lazy">
+                <div class="portfolio-item portfolio-card glass-card !rounded-xl overflow-hidden text-reveal">
+                    <img src="https://source.unsplash.com/1200x900/?education,dashboard,online-learning" alt="Learning management dashboard and progress view" class="portfolio-media" loading="lazy">
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Learning Management System</h3>
                         <p class="text-gray-400 mb-4">Interactive online education platform</p>
@@ -737,7 +865,7 @@ document.head.appendChild(o)}initApollo();</script>
             </div>
         </div>
     </section>
-    <section class="py-20 px-6 bg-black">
+    <section class="py-20 px-6 section-soft">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-reveal">
@@ -814,7 +942,7 @@ document.head.appendChild(o)}initApollo();</script>
         </div>
     </section>
 
-    <section id="pricing" class="py-20 px-6 bg-black">
+    <section id="pricing" class="py-20 px-6 section-soft">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-reveal">Flexible <span class="text-primary">Packages</span></h2>
@@ -858,7 +986,7 @@ document.head.appendChild(o)}initApollo();</script>
         </div>
     </section>
 
-    <section id="faq" class="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+    <section id="faq" class="py-20 px-6 section-soft">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-4xl md:text-5xl font-bold mb-4 text-reveal">Frequently Asked <span class="text-primary">Questions</span></h2>
@@ -897,7 +1025,7 @@ document.head.appendChild(o)}initApollo();</script>
         </div>
     </section>
 
-    <section id="contact" class="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+    <section id="contact" class="py-20 px-6 section-soft">
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div class="space-y-8">
