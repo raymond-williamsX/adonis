@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://adonis.example.com/sitemap.xml
+Sitemap: https://adonisoftware.tech/sitemap.xml
